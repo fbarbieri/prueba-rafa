@@ -26,12 +26,12 @@ angular
       .when('/', {
         templateUrl: 'views/area/list.html',
         controller: 'AreasListCtrl',
-        controllerAs: 'main'
-      })
-      .when('/area/edit', {
-        templateUrl: 'views/area/edit.html',
-        controller: 'AreasEditCtrl',
-        controllerAs: 'about'
+        controllerAs: 'main',
+        resolve: {
+	        areas: function (Areas) {
+	          return Areas.query();
+	        }
+	      }
       })
       .otherwise({
         redirectTo: '/'
